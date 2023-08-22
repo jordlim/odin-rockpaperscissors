@@ -1,5 +1,3 @@
-console.log("Hello");
-
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
   if (choice == 1) return "Rock";
@@ -8,16 +6,27 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  let input = toLowerCase(playerSelection);
+  let input = playerSelection.toLowerCase();
 
-  switch (input){
+  switch (input) {
     case "rock":
-      
-
-
-
+      if (computerSelection == "Rock") console.log("Tie!");
+      else if (computerSelection == "Paper")
+        console.log("You lose! Paper beats Rock");
+      else console.log("You win! Rock beats Scissors");
+      break;
+    case "paper":
+      if (computerSelection == "Rock") console.log("You win! Paper beats Rock");
+      else if (computerSelection == "Tie!") console.log("Lose");
+      else console.log("You lose! Scissors beats Paper");
+      break;
+    case "scissors":
+      if (computerSelection == "Rock") console.log("You lose! Rock beats Scissors");
+      else if (computerSelection == "Paper") console.log("You win! Scissors beats Paper");
+      else console.log("TIe!");
+      break;
     default:
-      console.log("Invalid input")
+      console.log("Invalid input");
   }
 }
 
