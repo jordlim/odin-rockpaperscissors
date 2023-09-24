@@ -10,7 +10,7 @@ function playRound(playerSelection, computerSelection) {
     case "rock":
       if (computerSelection == "Rock") return ["Tie!", 0];
       else if (computerSelection == "Paper")
-        return ["You lose! Paper beats Rock" - 1];
+        return ["You lose! Paper beats Rock", -1];
       else return ["You win! Rock beats Scissors", 1];
       break;
     case "paper":
@@ -54,20 +54,22 @@ function game(winner) {
   // for (let i = 0; i < 5; i++) {
   const results = document.querySelector(".results");
   const score = document.querySelector(".score");
+  const match = document.querySelector(".match");
 
   results.textContent = winner[0];
   if (winner[1] == 1) playerScore++;
   else if (winner[1] == -1) computerScore++;
 
-  console.log(playerScore + "-" + computerScore);
-
   score.textContent = playerScore + "-" + computerScore;
   rounds++;
+  match.textContent = "";
   if (rounds == 5) {
-    if (playerScore > computerScore) results.textContent = "You won the match!";
+    if (playerScore > computerScore) 
+      match.textContent = "You won the match!";
     else if (playerScore < computerScore)
-      results.textContent = "You lost the match!";
-    else results.textContent = "The match was a tie.";
+      match.textContent = "You lost the match!";
+    else 
+      match.textContent = "The match was a tie.";
 
     rounds = 0;
     playerScore = 0;
