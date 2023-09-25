@@ -1,15 +1,15 @@
-html{
+html {
   font-size: 20px;
   background: url(images/paper.jpg);
   background-size: 100% 100%;
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-div{
+div {
   padding: 20px;
 }
 
-body{
+body {
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -17,33 +17,32 @@ body{
   margin-top: 50px;
 }
 
-button{
+button {
   padding: 16px;
   height: 64px;
   width: 128px;
 
   font-size: 24px;
   font-weight: bold;
-  
+
   background-color: rgb(82, 82, 82);
   border-radius: 20px;
   border: 1px;
   border-color: aliceblue;
   color: white;
-
 }
 
-
-.buttons{
+.buttons {
   display: flex;
   gap: 32px;
   justify-items: auto;
   justify-content: space-around;
-
-
-
 }
 
-#match{
+.score {
+  font-style:oblique;
+  font-size: 20px;
+}
+#match {
   height: 20px;
 }

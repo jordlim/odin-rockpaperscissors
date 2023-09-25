@@ -30,22 +30,27 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Button selectors
-const rock = document.querySelector("#rock");
-rock.addEventListener("click", () => {
-  winner = playRound("rock", getComputerChoice());
-  game(winner);
-});
+function setButtonColor(winner, btn) {
+  if (winner[1] == 1) btn.style.color = "green";
+  else if (winner[1] == -1) btn.style.color = "red";
+  else btn.style.color = "blue";
+}
 
-const paper = document.querySelector("#paper");
-paper.addEventListener("click", () => {
-  winner = playRound("paper", getComputerChoice());
-  game(winner);
-});
-const scissors = document.querySelector("#scissors");
-scissors.addEventListener("click", () => {
-  winner = playRound("scissors", getComputerChoice());
-  game(winner);
+// Button selectors
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    winner = playRound(btn.id, getComputerChoice());
+
+    // Loop through every button and reset color. Slightly inefficient
+    buttons.forEach((btncol) => {
+      btncol.style.color= "white";
+    });
+
+    setButtonColor(winner, btn);
+    game(winner);
+  });
 });
 
 let win = 0;
