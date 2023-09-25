@@ -30,6 +30,7 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// Button selectors
 const rock = document.querySelector("#rock");
 rock.addEventListener("click", () => {
   winner = playRound("rock", getComputerChoice());
@@ -47,33 +48,44 @@ scissors.addEventListener("click", () => {
   game(winner);
 });
 
-let playerScore = 0;
-let computerScore = 0;
+let win = 0;
+let loss = 0;
+let draw = 0;
 let rounds = 0;
 function game(winner) {
-  // for (let i = 0; i < 5; i++) {
   const results = document.querySelector(".results");
   const score = document.querySelector(".score");
-  const match = document.querySelector(".match");
+  const match = document.getElementById("match");
 
-  results.textContent = winner[0];
-  if (winner[1] == 1) playerScore++;
-  else if (winner[1] == -1) computerScore++;
-
-  score.textContent = playerScore + "-" + computerScore;
-  rounds++;
+  // Keep match results empty during new games
   match.textContent = "";
-  if (rounds == 5) {
-    if (playerScore > computerScore) 
-      match.textContent = "You won the match!";
-    else if (playerScore < computerScore)
-      match.textContent = "You lost the match!";
-    else 
-      match.textContent = "The match was a tie.";
 
+  // Adjust score and round state
+  results.textContent = winner[0];
+  if (winner[1] == 1) win++;
+  else if (winner[1] == -1) loss++;
+  else draw++;
+
+  score.textContent = win + "-" + loss + "-" + draw;
+  rounds++;
+
+  if (rounds == 5) {
+    if (win > loss) {
+      match.style.color = "green";
+      match.textContent = "You won the match!";
+    } else if (win < loss) {
+      match.style.color = "red";
+      match.textContent = "You lost the match!";
+    } else {
+      match.style.color = "blue";
+      match.textContent = "The match was a tie.";
+    }
+
+    // Reset game
     rounds = 0;
-    playerScore = 0;
-    computerScore = 0;
+    win = 0;
+    loss = 0;
+    draw = 0;
   }
   // }
   // if (score > 0) console.log("You win!");
